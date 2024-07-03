@@ -1,0 +1,89 @@
+
+<html>
+    <head>
+       <title>Rating App By Nikhil</title>
+       <style>
+        *{
+            font-size: 40px;
+        }
+        body{
+            background-color: #3745db;
+        }
+       </style>
+    </head>
+    <body>
+        <center>
+            <h1>Rating App by Nikhil</h1>
+            <form onsubmit="show()">
+                <input type="text" placeholder="Enter rating Bw 1 to 5" id="rating"
+                style="width: 680px;">
+                <br><br>
+                <input type="submit" value="M1">
+                <input type="submit" value="M2">
+                <input type="submit" value="M3">
+
+            </form>
+            <h2 id="msg"\>
+        </center>
+        <script>
+            function show(){
+                event.preventDefault();
+                let rating= document.getElementById("rating");
+                let msg= document.getElementById("msg");
+
+                if(rating.value==""){
+                    alert("Please enter a rating bw 1 to 5");
+                    rating.focus();
+                    return;
+                }
+                let r = parseInt(rating.value);
+                if(r<1 || r>5){
+                    alert("Please enter a rating bw 1 to 5");
+                    rating.innerHTML="";
+                    msg.focus();
+                    return;
+                }
+                let action=document.activeElement.value;
+                if(action=="M1"){
+                    let res="";
+                    if(r==5)  res="Excellent";
+                    else if(r==4) res="Excellent";
+                    else if(r==3) res="ok";
+                    else if(r==2) res="Ok";
+                    else if(r==1) res="Poor";
+
+                    msg.innerHTML= "M!->"+res;
+                       
+                    
+                }
+                
+               else if(action=="M2"){
+                    let res="";
+                    if((r==5) || (r==4))  res="Excellent";
+                    
+                    else if((r==3) || (res==2)) res="ok";
+                 
+                    else if(r==1) res="Poor";
+
+                    msg.innerHTML= "M2->"+res;
+                       
+                    
+                }
+                else if(action=="M3"){
+                    let res="";
+                    switch(r){
+                        case 1: res="Poor";
+                        case 2: res="Ok";
+                        case 3: res="Ok";
+                        case 4: res="Excellent";
+                        case 5: res="Excellent";
+                    }
+                    msg.innerHTML="M3->"+res
+                }
+                
+
+                
+            }
+        </script>
+    </body>
+</html>
